@@ -23,7 +23,8 @@
  */
 
 #include "OALSound.h"
-#include "exoway.h"
+
+#include <stdexcept>
 
 OALSound::OALSound(const std::string &filePath)
 : _id(0)
@@ -43,7 +44,7 @@ OALSound::OALSound(const std::string &filePath)
     pOggLoader = nullptr;
     
     if (alGetError() != AL_NO_ERROR)
-        throw (exoway::BasicException("OpenAL error when loading " + filePath));
+        throw (std::invalid_argument("OpenAL error when loading " + filePath));
 }
 
 OALSound::~OALSound(void)

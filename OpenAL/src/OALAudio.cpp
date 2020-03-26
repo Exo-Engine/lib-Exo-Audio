@@ -23,7 +23,17 @@
  */
 
 #include "OALAudio.h"
-#include "exoway.h"
+
+#include <stdexcept>
+
+static OALAudio*    g_instance = nullptr;
+
+OALAudio&    OALAudio::Get(void)
+{
+    if (!g_instance)
+        g_instance = new OALAudio();
+    return (*g_instance);
+}
 
 OALAudio::OALAudio(void)
 : _pDevice(nullptr), _pContext(nullptr)
@@ -40,15 +50,15 @@ void OALAudio::initialize(void)
 {
     _pDevice = alcOpenDevice(nullptr); // Default device
     if (!_pDevice)
-        throw (exoway::BasicException("OpenAL error when opening the default device"));
+        throw (std::runtime_error("OpenAL error when opening the default device"));
     
     _pContext = alcCreateContext(_pDevice, nullptr);
     if (!_pContext)
-        throw (exoway::BasicException("OpenAL error when creating the context"));
+        throw (std::runtime_error("OpenAL error when creating the context"));
     
     // Activate context
     if (!alcMakeContextCurrent(_pContext))
-        throw (exoway::BasicException("OpenAL error when activating the context"));
+        throw (std::runtime_error("OpenAL error when activating the context"));
     
     // Static orientation for 2D, look at Z
     ALfloat Orientation[] = {0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f};

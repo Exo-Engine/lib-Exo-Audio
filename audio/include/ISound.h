@@ -25,9 +25,8 @@
 #pragma once
 
 #include <string>
-#include "IResource.h"
 
-class ISound : public IResource
+class ISound
 {
 public:
     ISound(void);

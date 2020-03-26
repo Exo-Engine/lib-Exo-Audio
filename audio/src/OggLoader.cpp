@@ -23,7 +23,8 @@
  */
 
 #include "OggLoader.h"
-#include "exoway.h"
+
+#include <stdexcept>
 
 OggLoader::OggLoader(const std::string &filePath)
 : _file(nullptr), _format(0), _sampleRate(0), _totalRead(0)
@@ -31,11 +32,11 @@ OggLoader::OggLoader(const std::string &filePath)
     // Open for binary reading
     _file = fopen(filePath.c_str(), "rb");
     if (!_file)
-         throw (exoway::BasicException("Error: Ogg file " + filePath + " not found!"));
+         throw (std::invalid_argument("Error: Ogg file " + filePath + " not found!"));
     
     // Open stream flux
     if (ov_open(_file, &_stream, nullptr, 0) < 0)
-        throw (exoway::BasicException("Error: ogg-vorbis flux corrupted"));
+        throw (std::invalid_argument("Error: ogg-vorbis flux corrupted"));
     
     // Check the number of channels & the frequency of the sampling rate
     vorbis_info *pInfos = ov_info(&_stream, -1);

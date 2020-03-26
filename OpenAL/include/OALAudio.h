@@ -32,24 +32,23 @@
 # include <OpenAL/alc.h>
 #endif
 
-#include "Singleton.h"
 #include "IAudio.h"
 #include "ISound.h"
 #include "OALSource.h"
 #include "OALSound.h"
 #include "OALMusic.h"
 
-class OALAudio : public IAudio, public Singleton<OALAudio>
+class OALAudio : public IAudio
 {
 public:
-    friend class Singleton<OALAudio>;
-    
+    static OALAudio&    Get(void);
+
     virtual void initialize(void);
-    
+
     virtual void getDevices(std::vector<std::string> &devices);
     virtual void updateListener(const glm::vec3 &position, const glm::vec3 &velocity, float volume);
     virtual void updateVolume(float volume);
-    
+
     virtual ISource* createSource(void);
     virtual ISound* createSound(const std::string& filePath);
     virtual IMusic* createMusic(const std::string& filePath);
