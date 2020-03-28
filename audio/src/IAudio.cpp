@@ -24,6 +24,8 @@
 
 #include "IAudio.h"
 
+using namespace	ExoAudio;
+
 IAudio::IAudio(void)
 {	}
 

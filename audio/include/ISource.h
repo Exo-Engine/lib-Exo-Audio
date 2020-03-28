@@ -29,6 +29,9 @@
 #include "ISound.h"
 #include "IMusic.h"
 
+namespace	ExoAudio
+{
+
 class ISource
 {
 public:
@@ -58,3 +61,5 @@ public:
 	virtual void setVolume(float volume) = 0;
 	virtual void setPitch(float pitch) = 0;
 };
+
+}

@@ -24,6 +24,9 @@
 
 #include "OALMusic.h"
 
+using namespace	ExoAudioOpenAL;
+using namespace	ExoAudio;
+
 OALMusic::OALMusic(const std::string &filePath)
 : _pOggLoader(nullptr)
 {

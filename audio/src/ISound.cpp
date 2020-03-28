@@ -24,6 +24,8 @@
 
 #include "ISound.h"
 
+using namespace	ExoAudio;
+
 ISound::ISound(void)
 {	}
 

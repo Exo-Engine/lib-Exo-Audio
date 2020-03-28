@@ -37,6 +37,9 @@
 
 #define OGG_DEFAULT_BUFFER_SIZE 4096
 
+namespace	ExoAudio
+{
+
 class OggLoader
 {
 public:
@@ -57,3 +60,5 @@ private:
 	int			 _sampleRate;
 	int			 _totalRead;
 };
+
+}

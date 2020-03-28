@@ -35,7 +35,10 @@
 #include "ISound.h"
 #include "OggLoader.h"
 
-class OALSound : public ISound
+namespace	ExoAudioOpenAL
+{
+
+class OALSound : public ExoAudio::ISound
 {
 public:
 	OALSound(const std::string &filePath);
@@ -46,3 +49,5 @@ public:
 private:
 	ALuint _id;
 };
+
+}

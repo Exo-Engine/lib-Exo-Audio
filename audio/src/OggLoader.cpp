@@ -26,6 +26,8 @@
 
 #include <stdexcept>
 
+using namespace	ExoAudio;
+
 OggLoader::OggLoader(const std::string &filePath)
 : _file(nullptr), _format(0), _sampleRate(0), _totalRead(0)
 {

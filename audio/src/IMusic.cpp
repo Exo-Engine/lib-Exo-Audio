@@ -24,6 +24,8 @@
 
 #include "IMusic.h"
 
+using namespace	ExoAudio;
+
 IMusic::IMusic()
 {	}
 

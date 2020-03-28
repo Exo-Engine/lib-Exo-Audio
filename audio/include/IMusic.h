@@ -26,9 +26,14 @@
 
 #include <string>
 
+namespace	ExoAudio
+{
+
 class IMusic
 {
 public:
 	IMusic(void);
 	virtual ~IMusic(void);
 };
+
+}

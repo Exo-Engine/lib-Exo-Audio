@@ -24,6 +24,8 @@
 
 #include "ISource.h"
 
+using namespace	ExoAudio;
+
 ISource::ISource(void)
 {	}
 

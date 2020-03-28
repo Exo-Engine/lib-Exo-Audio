@@ -24,6 +24,9 @@
 
 #include "OALSource.h"
 
+using namespace	ExoAudioOpenAL;
+using namespace	ExoAudio;
+
 OALSource::OALSource()
 : _id(0), _pMusic(nullptr)
 {

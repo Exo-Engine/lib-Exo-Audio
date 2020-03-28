@@ -26,6 +26,9 @@
 
 #include <stdexcept>
 
+using namespace	ExoAudioOpenAL;
+using namespace	ExoAudio;
+
 static OALAudio*	g_instance = nullptr;
 
 OALAudio&	OALAudio::Get(void)

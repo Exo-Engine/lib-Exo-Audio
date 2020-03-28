@@ -31,6 +31,9 @@
 #include "ISource.h"
 #include "ISound.h"
 
+namespace	ExoAudio
+{
+
 class IAudio
 {
 public:
@@ -47,3 +50,5 @@ public:
 	virtual ISound* createSound(const std::string& filePath) = 0;
 	virtual IMusic* createMusic(const std::string& filePath) = 0;
 };
+
+}

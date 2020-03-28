@@ -26,6 +26,9 @@
 
 #include <stdexcept>
 
+using namespace	ExoAudioOpenAL;
+using namespace	ExoAudio;
+
 OALSound::OALSound(const std::string &filePath)
 : _id(0)
 {

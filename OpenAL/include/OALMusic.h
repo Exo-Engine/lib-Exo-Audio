@@ -35,7 +35,10 @@
 #include "IMusic.h"
 #include "OggLoader.h"
 
-class OALMusic : public IMusic
+namespace	ExoAudioOpenAL
+{
+
+class OALMusic : public ExoAudio::IMusic
 {
 public:
 	OALMusic(const std::string &filePath);
@@ -46,7 +49,9 @@ public:
 	// Getters
 	ALuint* getBuffers(void);
 private:
-	std::vector<char>	_bufferData;
-	OggLoader*			_pOggLoader;
-	ALuint				_id[2] = {0, 0};
+	std::vector<char>		_bufferData;
+	ExoAudio::OggLoader*	_pOggLoader;
+	ALuint					_id[2] = {0, 0};
 };
+
+}

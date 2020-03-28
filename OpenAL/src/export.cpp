@@ -30,6 +30,8 @@
 #define DLLExport
 #endif
 
+using namespace	ExoAudioOpenAL;
+
 extern "C" DLLExport OALAudio* StartPlugin()
 {
 	return &OALAudio::Get();

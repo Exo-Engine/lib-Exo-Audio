@@ -36,7 +36,10 @@
 #include "OALSound.h"
 #include "OALMusic.h"
 
-class OALSource : public ISource
+namespace	ExoAudioOpenAL
+{
+
+class OALSource : public ExoAudio::ISource
 {
 public:
 	OALSource(void);
@@ -53,8 +56,8 @@ public:
 	ALuint getSource(void) const;
 	
 	// Setters
-	virtual void setAudio(const ISound* sound);
-	virtual void setAudio(const IMusic* music);
+	virtual void setAudio(const ExoAudio::ISound* sound);
+	virtual void setAudio(const ExoAudio::IMusic* music);
 	virtual void setPosition(const glm::vec3 &position);
 	virtual void setVolume(float volume);
 	virtual void setPitch(float pitch);
@@ -62,3 +65,5 @@ private:
 	OALMusic *_pMusic; // For streaming
 	ALuint _id;
 };
+
+}
