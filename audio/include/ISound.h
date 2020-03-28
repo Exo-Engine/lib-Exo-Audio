@@ -30,5 +30,5 @@ class ISound
 {
 public:
 	ISound(void);
-	virtual ~ISound(void);
+	virtual ~ISound(void) = 0;
 };
