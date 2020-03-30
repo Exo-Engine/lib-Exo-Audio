@@ -22,19 +22,19 @@
  *	SOFTWARE.
  */
 
-#pragma once
+#ifndef IRESOURCE_H
+# define IRESOURCE_H
 
-#include <string>
-#include "IResource.h"
-
-namespace	ExoAudio
+namespace	ExoEngine
 {
 
-class ISound : public ExoEngine::IResource
+class IResource
 {
 public:
-	ISound(void);
-	virtual ~ISound(void) = 0;
+	IResource(void) { }
+	virtual ~IResource(void) { }
 };
 
 }
+
+#endif
