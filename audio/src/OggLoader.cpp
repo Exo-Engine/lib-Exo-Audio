@@ -1,18 +1,18 @@
 /*
  *	MIT License
- *	
+ *
  *	Copyright (c) 2020 Gaëtan Dezeiraud and Ribault Paul
- *	
+ *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy
  *	of this software and associated documentation files (the "Software"), to deal
  *	in the Software without restriction, including without limitation the rights
  *	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *	copies of the Software, and to permit persons to whom the Software is
  *	furnished to do so, subject to the following conditions:
- *	
+ *
  *	The above copyright notice and this permission notice shall be included in all
  *	copies or substantial portions of the Software.
- *	
+ *
  *	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -35,11 +35,11 @@ OggLoader::OggLoader(const std::string &filePath)
 	_file = fopen(filePath.c_str(), "rb");
 	if (!_file)
 		 throw (std::invalid_argument("Error: Ogg file " + filePath + " not found!"));
-	
+
 	// Open stream flux
 	if (ov_open(_file, &_stream, nullptr, 0) < 0)
 		throw (std::invalid_argument("Error: ogg-vorbis flux corrupted"));
-	
+
 	// Check the number of channels & the frequency of the sampling rate
 	vorbis_info *pInfos = ov_info(&_stream, -1);
 	_format = pInfos->channels == 1 ? AL_FORMAT_MONO16 : AL_FORMAT_STEREO16;
@@ -69,18 +69,18 @@ char* OggLoader::readSample(std::vector<short> &samples, int nbSamples)
 	int totalSize	= nbSamples * sizeof(short);
 	char* samplesPtr = reinterpret_cast<char*>(&samples[0]);
 	_totalRead	= 0;
-	
+
 	// Decoding
 	while (_totalRead < totalSize)
 	{
 		int read = (int)ov_read(&_stream, samplesPtr + _totalRead, totalSize - _totalRead, 0, 2, 1, nullptr);
-		
+
 		if (read > 0)
 			_totalRead += read;
 		else // Error when we reading, stop
 			break;
 	}
-	
+
 	return samplesPtr;
 }
 

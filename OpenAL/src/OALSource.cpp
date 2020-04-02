@@ -1,18 +1,18 @@
 /*
  *	MIT License
- *	
+ *
  *	Copyright (c) 2020 Gaëtan Dezeiraud and Ribault Paul
- *	
+ *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy
  *	of this software and associated documentation files (the "Software"), to deal
  *	in the Software without restriction, including without limitation the rights
  *	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *	copies of the Software, and to permit persons to whom the Software is
  *	furnished to do so, subject to the following conditions:
- *	
+ *
  *	The above copyright notice and this permission notice shall be included in all
  *	copies or substantial portions of the Software.
- *	
+ *
  *	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -37,20 +37,20 @@ OALSource::OALSource()
 OALSource::~OALSource()
 {
 	alSourceStop(_id);
-	
+
 	// Clean source buffers
 	if (_pMusic)
 	{
 		ALint	nbQueued;
 		ALuint buffer;
 		alGetSourcei(_id, AL_BUFFERS_QUEUED, &nbQueued);
-		
+
 		for (ALint i = 0; i < nbQueued; ++i)
 			alSourceUnqueueBuffers(_id, 1, &buffer);
-		
+
 		alSourcei(_id, AL_BUFFER, 0);
 	}
-	
+
 	alSourcei(_id, AL_BUFFER, 0);
 	alDeleteSources(1, &_id);
 }
@@ -81,7 +81,7 @@ ISource::SourceState OALSource::getState(void)
 {
 	ALint status;
 	alGetSourcei(_id, AL_SOURCE_STATE, &status);
-	
+
 	switch (status)
 	{
 		case AL_STOPPED:
@@ -113,7 +113,7 @@ void OALSource::setAudio(const IMusic* music)
 		delete _pMusic;
 		_pMusic = nullptr;
 	}
-	
+
 	_pMusic = (OALMusic*)music;
 	alSourceQueueBuffers(_id, 2, _pMusic->getBuffers());
 }
